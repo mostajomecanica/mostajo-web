@@ -2,26 +2,10 @@ backend:
   name: git-gateway
   branch: main
 
-# Dónde se guardan las fotos que subís (quedan en tu repositorio de GitHub)
 media_folder: "content/uploads"
 public_folder: "/content/uploads"
 
 publish_mode: simple
 locale: "es"
 
-collections:
-  - name: "galeria"
-    label: "Galería de fotos"
-    files:
-      - name: "fotos"
-        label: "Fotos del taller"
-        file: "content/gallery.json"
-        description: "Acá subís las fotos que se ven en la web. Podés elegir varias juntas de una sola vez (arrastrando todas o marcando varias con Ctrl/Cmd + click en la ventana de tu compu)."
-        fields:
-          - name: "photos"
-            label: "Fotos"
-            widget: "image"
-            multiple: true
-            media_library:
-              config:
-                multiple: true
+collections: []
