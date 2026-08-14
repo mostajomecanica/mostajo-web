@@ -1,0 +1,27 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Dónde se guardan las fotos que subís (quedan en tu repositorio de GitHub)
+media_folder: "content/uploads"
+public_folder: "/content/uploads"
+
+publish_mode: simple
+locale: "es"
+
+collections:
+  - name: "galeria"
+    label: "Galería de fotos"
+    files:
+      - name: "fotos"
+        label: "Fotos del taller"
+        file: "content/gallery.json"
+        description: "Acá subís y ordenás las fotos que se ven en la web. Podés agregar, borrar o reordenar arrastrando."
+        fields:
+          - name: "photos"
+            label: "Fotos"
+            label_singular: "Foto"
+            widget: "list"
+            fields:
+              - { name: "image", label: "Imagen", widget: "image" }
+              - { name: "caption", label: "Descripción (opcional)", widget: "string", required: false }
