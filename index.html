@@ -298,23 +298,6 @@
   }
 
   /* floating whatsapp */
-  /* ---------- galería ---------- */
-  .gallery-grid{
-    display:none;
-    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:16px;
-  }
-  .gallery-grid.is-visible{ display:grid; }
-  .gallery-item{
-    position:relative; aspect-ratio:4/3; border-radius:4px; overflow:hidden;
-    background:var(--surface); border:1px solid var(--line);
-  }
-  .gallery-item img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .gallery-item .cap{
-    position:absolute; left:0; right:0; bottom:0; padding:10px 12px;
-    background:linear-gradient(to top, rgba(0,0,0,.75), transparent);
-    font-family:var(--mono); font-size:12px; color:var(--paper);
-  }
-  .gallery-empty-note{ color:var(--text-mute); font-size:14px; }
 
   /* ---------- último video ---------- */
   .yt-card{
@@ -443,16 +426,6 @@
         <p>Revisión completa antes de comprar un auto usado, para que la decisión se tome con información real.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="fotos">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Trabajos en el taller</h2>
-      <p class="gallery-empty-note" id="galleryEmptyNote">Pronto vamos a sumar fotos acá.</p>
-    </div>
-    <div class="gallery-grid" id="galleryGrid"></div>
   </div>
 </section>
 
@@ -820,30 +793,6 @@
         document.getElementById('ytCard').classList.add('is-visible');
       })
       .catch(function(){ /* si falla, la sección queda oculta y no rompe nada */ });
-  })();
-
-  // Cargar la galería de fotos desde content/gallery.json (esto lo editás vos desde /admin)
-  (function(){
-    fetch('content/gallery.json')
-      .then(function(res){ return res.json(); })
-      .then(function(data){
-        var photos = data.photos || [];
-        if (!photos.length) return; // deja la nota "Pronto vamos a sumar fotos" visible
-
-        var grid = document.getElementById('galleryGrid');
-        photos.forEach(function(photoUrl){
-          var item = document.createElement('div');
-          item.className = 'gallery-item';
-          var img = document.createElement('img');
-          img.src = photoUrl;
-          img.alt = 'Foto del taller';
-          item.appendChild(img);
-          grid.appendChild(item);
-        });
-        grid.classList.add('is-visible');
-        document.getElementById('galleryEmptyNote').style.display = 'none';
-      })
-      .catch(function(){ /* si falla, se deja la nota por defecto y no rompe nada */ });
   })();
 </script>
 
