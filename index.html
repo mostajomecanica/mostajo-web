@@ -840,19 +840,13 @@
         if (!photos.length) return; // deja la nota "Pronto vamos a sumar fotos" visible
 
         var grid = document.getElementById('galleryGrid');
-        photos.forEach(function(p){
+        photos.forEach(function(photoUrl){
           var item = document.createElement('div');
           item.className = 'gallery-item';
           var img = document.createElement('img');
-          img.src = p.image;
-          img.alt = p.caption || 'Foto del taller';
+          img.src = photoUrl;
+          img.alt = 'Foto del taller';
           item.appendChild(img);
-          if (p.caption) {
-            var cap = document.createElement('div');
-            cap.className = 'cap';
-            cap.textContent = p.caption;
-            item.appendChild(cap);
-          }
           grid.appendChild(item);
         });
         grid.classList.add('is-visible');
